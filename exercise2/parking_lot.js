@@ -16,6 +16,8 @@ const main = (() => {
 
     const emptySlot = parkingSlots.findIndex((slot) => slot === null);
 
+    if (emptySlot === -1) return null;
+
     const updatedParkingSlots = [...parkingSlots];
     updatedParkingSlots[emptySlot] = car;
 
