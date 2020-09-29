@@ -55,6 +55,17 @@ const main = (() => {
     return carsWithCertainColor.map((car) => car.slotNumber);
   };
 
+  const findSlotNumbersByRegistrationNumber = (registrationNumber) => {
+    const carsWithCertainColor = parkingSlots.filter((car, index) => {
+      if (car) {
+        car.slotNumber = index + 1;
+        return car.registrationNumber === registrationNumber;
+      }
+    });
+
+    return carsWithCertainColor.map((car) => car.slotNumber);
+  };
+
   return {
     createParkingSlot,
     park,
@@ -62,6 +73,7 @@ const main = (() => {
     status,
     findRegistrationNumbersByColor,
     findSlotNumbersByColor,
+    findSlotNumbersByRegistrationNumber,
   };
 })();
 
@@ -74,4 +86,5 @@ main.park('234ss54253', 'yellow');
 main.park('23454253', 'red');
 
 console.log(main.findSlotNumbersByColor('yellow'));
+console.log(main.findSlotNumbersByRegistrationNumber('23454253'));
 console.log(main.findRegistrationNumbersByColor('yellow'));
