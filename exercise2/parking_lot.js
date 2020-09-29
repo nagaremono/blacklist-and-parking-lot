@@ -36,5 +36,19 @@ const main = (() => {
 
   const status = () => parkingSlots;
 
-  return { createParkingSlot, park, unpark, status };
+  const findRegistrationNumbersByColor = (color) => {
+    const carsWithCertainColor = parkingSlots.filter((car) => {
+      if (car) return car.color === color;
+    });
+
+    return carsWithCertainColor;
+  };
+
+  return {
+    createParkingSlot,
+    park,
+    unpark,
+    status,
+    findRegistrationNumbersByColor,
+  };
 })();
