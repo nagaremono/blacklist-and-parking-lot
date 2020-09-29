@@ -41,7 +41,7 @@ const main = (() => {
       if (car) return car.color === color;
     });
 
-    return carsWithCertainColor;
+    return carsWithCertainColor.map((car) => car.registrationNumber);
   };
 
   const findSlotNumbersByColor = (color) => {
