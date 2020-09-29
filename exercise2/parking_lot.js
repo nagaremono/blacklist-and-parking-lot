@@ -21,8 +21,18 @@ const main = (() => {
 
     parkingSlots = updatedParkingSlots;
 
-    return parkingSlots;
+    return emptySlot + 1;
   };
 
-  return { createParkingSlot, park };
+  const unpark = (parkSlot) => {
+    const updatedParkingSlots = [...parkingSlots];
+    updatedParkingSlots[parkSlot - 1] = null;
+    parkingSlots = updatedParkingSlots;
+
+    return parkSlot - 1;
+  };
+
+  const status = () => parkingSlots;
+
+  return { createParkingSlot, park, unpark, status };
 })();
