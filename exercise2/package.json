@@ -9,6 +9,6 @@
   "author": "Guruh Edi Purwanto",
   "license": "ISC",
   "bin": {
-    "parking_lot.js": "parking_lot.js"
+    "parking_lot": "./parking_lot.js"
   }
 }
