@@ -18,6 +18,8 @@ const main = (() => {
 
     if (emptySlot === -1) return null;
 
+    car.slotNumber = emptySlot + 1;
+
     const updatedParkingSlots = [...parkingSlots];
     updatedParkingSlots[emptySlot] = car;
 
@@ -45,9 +47,8 @@ const main = (() => {
   };
 
   const findSlotNumbersByColor = (color) => {
-    const carsWithCertainColor = parkingSlots.filter((car, index) => {
+    const carsWithCertainColor = parkingSlots.filter((car) => {
       if (car) {
-        car.slotNumber = index + 1;
         return car.color === color;
       }
     });
@@ -56,9 +57,8 @@ const main = (() => {
   };
 
   const findSlotNumbersByRegistrationNumber = (registrationNumber) => {
-    const carsWithCertainColor = parkingSlots.filter((car, index) => {
+    const carsWithCertainColor = parkingSlots.filter((car) => {
       if (car) {
-        car.slotNumber = index + 1;
         return car.registrationNumber === registrationNumber;
       }
     });
