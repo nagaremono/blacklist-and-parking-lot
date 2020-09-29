@@ -1,5 +1,4 @@
 #! /usr/bin/env node
-
 const main = (() => {
   let parkingSlots = [];
 
@@ -43,27 +42,35 @@ const main = (() => {
       if (car) return car.color === color;
     });
 
-    return carsWithCertainColor.map((car) => car.registrationNumber);
+    const registrationNumbers = carsWithCertainColor.map(
+      (car) => car.registrationNumber
+    );
+
+    return registrationNumbers.length === 0 ? null : registrationNumbers;
+  };
+
+  const findSlotNumbers = (filterFunction) => {
+    const carsWithCertainColor = parkingSlots.filter(filterFunction);
+
+    const slotNumbers = carsWithCertainColor.map((car) => car.slotNumber);
+
+    return slotNumbers.length === 0 ? null : slotNumbers;
   };
 
   const findSlotNumbersByColor = (color) => {
-    const carsWithCertainColor = parkingSlots.filter((car) => {
+    return findSlotNumbers((car) => {
       if (car) {
         return car.color === color;
       }
     });
-
-    return carsWithCertainColor.map((car) => car.slotNumber);
   };
 
   const findSlotNumbersByRegistrationNumber = (registrationNumber) => {
-    const carsWithCertainColor = parkingSlots.filter((car) => {
+    return findSlotNumbers((car) => {
       if (car) {
         return car.registrationNumber === registrationNumber;
       }
     });
-
-    return carsWithCertainColor.map((car) => car.slotNumber);
   };
 
   return {
